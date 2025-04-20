@@ -1,26 +1,26 @@
 DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS accounts;
 
-
-CREATE TABLE customer (
-customer_id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-name varchar(100) not null,
-email varchar(100) not null,
-mobile_number varchar(20) not null,
-create_dt date default null
+CREATE TABLE `customer` (
+  `customer_id` int AUTO_INCREMENT  PRIMARY KEY,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `mobile_number` varchar(20) NOT NULL,
+  `create_dt` date DEFAULT NULL
 );
 
-CREATE TABLE accounts (
-    account_number int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    customer_id int not null,
-    account_type varchar(100) not null,
-    branch_address varchar(200) not null,
-    create_dt timestamp default null,
-    FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE
+CREATE TABLE `accounts` (
+  `customer_id` int NOT NULL,
+   `account_number` int AUTO_INCREMENT  PRIMARY KEY,
+  `account_type` varchar(100) NOT NULL,
+  `branch_address` varchar(200) NOT NULL,
+  `create_dt` date DEFAULT NULL
 );
 
-insert into customer (name,email,mobile_number,create_dt)
-values ('Maryna', 'maryna@gmail.com', '123456', CURRENT_DATE());
 
-insert into accounts (customer_id,account_type,branch_address,create_dt)
-values (1,'Savings','123 Main Street, New York', CURRENT_DATE());
+INSERT INTO `customer` (`name`,`email`,`mobile_number`,`create_dt`)
+ VALUES ('Marina','marina@gmail.com','9876548337',CURDATE());
+
+INSERT INTO `accounts` (`customer_id`, `account_number`, `account_type`, `branch_address`, `create_dt`)
+ VALUES (1, 186576453, 'Savings', '123 Main Street, New York', CURDATE());
+
